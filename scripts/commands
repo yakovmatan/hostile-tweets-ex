@@ -1,2 +1,4 @@
 docker build -t hostil-tweets-ex .
 docker login
+docker tag hostil-tweets-ex yakovthedocker/hostil-tweets-ex:1.1
+docker push yakovthedocker/hostil-tweets-ex:1.1
