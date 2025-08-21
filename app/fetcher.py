@@ -23,8 +23,10 @@ class DataLoader:
             collection = self.db[self.collection_name]
             return list(collection.find({}, {"_id": 0}))
         except PyMongoError as e:
-            print(f"Error reading data: {e}")
-            return []
+            return {"error": "database_error", "Error reading data": e}
 
-
+if __name__ == '__main__':
+    d = DataLoader()
+    c = d.get_data()
+    print(c)
 
