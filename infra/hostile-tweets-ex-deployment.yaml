@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hostile-tweets-ex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hostile-tweets-ex
+  template:
+    metadata:
+      labels:
+        app: hostile-tweets-ex
+    spec:
+      containers:
+      - name: hostile-tweets-ex
+        image: yakovthedocker/hostil-tweets-ex:1.4
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MONGODB_USER
+          valueFrom:
+            secretKeyRef:
+              name: hostile-tweets-ex-secret
+              key: mongo-username
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hostile-tweets-ex-secret
+              key: mongo-password
+        - name: MONGODB_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: hostile-tweets-ex-secret
+              key: mongo-database
+        - name: MONGODB_COLLECTION
+          valueFrom:
+            secretKeyRef:
+              name: hostile-tweets-ex-secret
+              key: mongo-collection
