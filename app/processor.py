@@ -2,7 +2,6 @@ from collections import Counter
 from pandas import DataFrame
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from app.fetcher import DataLoader
 
 
 class TextProcessing:
@@ -30,6 +29,13 @@ class TextProcessing:
         else:
             return "negative"
 
+    @staticmethod
+    def _weapon_in_text(text, weapons: list):
+        words = text.split()
+        for w in weapons:
+            if w in words:
+                return w
+
     def rarest_word(self):
         self.df['rarest_word'] = self.df['Text'].apply(TextProcessing._rarest_word_in_text)
         return self
@@ -38,12 +44,6 @@ class TextProcessing:
         self.df['sentiment'] = self.df['Text'].apply(TextProcessing._sentiment_of_text)
         return self
 
-if __name__ == '__main__':
-    d = DataLoader()
-    c = d.get_data()
-    t = TextProcessing(DataFrame(c))
-    print(t.sentiment().df)
-
-
-
-
+    def weapons_detected(self, weapons):
+        self.df["weapons_detected"] = self.df["Text"].apply(lambda x: TextProcessing._weapon_in_text(x, weapons))
+        return self
