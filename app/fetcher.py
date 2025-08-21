@@ -24,9 +24,3 @@ class Fetcher:
             return list(collection.find({}, {"_id": 0}))
         except PyMongoError as e:
             return {"error": "database_error", "Error reading data": e}
-
-if __name__ == '__main__':
-    d = DataLoader()
-    c = d.get_data()
-    print(c)
-
