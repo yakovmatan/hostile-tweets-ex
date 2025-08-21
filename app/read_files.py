@@ -12,4 +12,4 @@ class ReadFile:
             raise FileNotFoundError(f"file not found: {self.path}")
 
         with open(self.path, "r") as file:
-            return file
+            return file.read()
