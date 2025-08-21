@@ -12,4 +12,4 @@ class Manager:
         self.data = Fetcher().get_data()
 
     def get_processed_data(self):
-        return TextProcessing(DataFrame(self.data)).rarest_word().sentiment().weapons_detected(self.weapons).df
+        return TextProcessing(DataFrame(self.data)).rarest_word().sentiment().weapons_detected(self.weapons).rename_columns_text().df.to_dict(orient='records')
