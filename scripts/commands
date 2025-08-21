@@ -1,0 +1,2 @@
+docker build -t hostil-tweets-ex .
+docker login
