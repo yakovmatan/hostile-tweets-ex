@@ -12,7 +12,7 @@ class Fetcher:
             mongo_password = os.getenv("MONGODB_PASSWORD", "iraniraniran")
             mongo_db = os.getenv("MONGODB_DATABASE","IranMalDB")
 
-            self.client = pymongo.MongoClient(f"mongodb+srv://{mongo_user}:{mongo_password}@{mongo_db}.gurutam.mongodb.net/")
+            self.client = pymongo.MongoClient(f"mongodb+srv://{mongo_user}:{mongo_password}@iranmaldb.gurutam.mongodb.net/")
 
             self.db = self.client[mongo_db]
         except PyMongoError as e:
