@@ -8,7 +8,7 @@ from app.read_files import ReadFile
 class Manager:
 
     def __init__(self):
-        self.weapons = ReadFile(path='../data/weapon_list.txt').read_file().split('\n')
+        self.weapons = ReadFile(path='data/weapon_list.txt').read_file().split('\n')
         self.data = Fetcher().get_data()
 
     def get_processed_data(self):
