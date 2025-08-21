@@ -2,3 +2,7 @@ docker build -t hostil-tweets-ex .
 docker login
 docker tag hostil-tweets-ex yakovthedocker/hostil-tweets-ex:1.1
 docker push yakovthedocker/hostil-tweets-ex:1.1
+oc apply -f .\infra\hostile-tweets-ex-deployment.yaml
+oc apply -f .\infra\hostile-tweets-ex-service.yaml
+oc apply -f .\infra\hostile-tweets-ex-secret.yaml
+oc expose service/hostile-tweets-ex-secret
