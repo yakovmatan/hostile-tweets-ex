@@ -5,4 +5,5 @@ docker push yakovthedocker/hostil-tweets-ex:1.1
 oc apply -f .\infra\hostile-tweets-ex-deployment.yaml
 oc apply -f .\infra\hostile-tweets-ex-service.yaml
 oc apply -f .\infra\hostile-tweets-ex-secret.yaml
-oc expose service/hostile-tweets-ex-secret
+oc expose service/hostile-tweets-ex
+oc annotate route hostile-tweets-ex haproxy.router.openshift.io/timeout=5m --overwrite
