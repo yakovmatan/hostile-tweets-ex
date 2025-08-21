@@ -3,13 +3,11 @@ from pandas import DataFrame
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-from app.fetcher import Fetcher
-
 
 class TextProcessing:
 
     def __init__(self, df: DataFrame):
-        nltk.download('vader_lexicon')
+        nltk.data.find("sentiment/vader_lexicon.zip")
         self.df = df.copy()
 
     @staticmethod

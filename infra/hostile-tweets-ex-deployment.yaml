@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hostile-tweets-ex
-        image: yakovthedocker/hostil-tweets-ex:1.1
+        image: yakovthedocker/hostil-tweets-ex:1.4
         ports:
         - containerPort: 8000
         env:
